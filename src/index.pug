@@ -1,0 +1,22 @@
+doctype html
+html(lang='es')
+    head
+        //< if (!args.electron) { >//
+        base(href='./')
+        //< } >//
+        meta(charset='utf-8')
+        title speedseedgui
+        meta(content='' description='')
+        link(href='favicon.ico' rel='shortcut icon')
+        link(href='css/main.css' rel='stylesheet')
+
+    body
+        //< if (args.electron && args.dev) { >//
+        script(async='' id='__bs_script__' src='//<= paths.electron.livereload >//')
+        //< } >//
+
+        sd-app Loading...
+
+        script(src='vendor.js')
+        script(src='commons.js')
+        script(src='main.js')
