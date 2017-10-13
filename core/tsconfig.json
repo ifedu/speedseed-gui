@@ -35,6 +35,7 @@
         "src",
         "-build",
         "-dist",
+        "-electron",
         "-tmp"
     ]
 }

@@ -1,0 +1,36 @@
+mat-grid-list(cols='2' rowHeight='60px')
+    mat-grid-tile
+        button('(click)'='selectDirectory()'
+            mat-raised-button color='primary') Select Directory
+
+    mat-grid-tile
+        button('(click)'='searchGenerators()'
+            mat-raised-button color='primary') Search Generators
+
+mat-grid-list(cols='2' rowHeight='60px')
+    mat-grid-tile
+        mat-form-field
+            input('[(ngModel)]'='selectedDirectory' placeholder='Selected Directory'
+                matInput disabled)
+
+    mat-grid-tile('*ngIf'='generators')
+        mat-form-field
+            mat-select('[(ngModel)]'='options.template' '(change)'='changeGenerator()' '[disabled]'='!generators'
+                placeholder='Generators')
+                mat-option('*ngFor'='let generator of generators' '[value]'='generator.value') {{generator.value}}
+
+mat-grid-list(cols='4' rowHeight='60px' '*ngIf'='options.template')
+    mat-grid-tile
+        mat-form-field
+            input('[(ngModel)]'='options.project'
+                matInput placeholder='project')
+
+    mat-grid-tile('*ngFor'='let generatorOption of generatorOptions')
+        mat-form-field
+            mat-select('[(ngModel)]'='options[generatorOption.name]' '[placeholder]'='generatorOption.name')
+                mat-option('*ngFor'='let choice of generatorOption.choices' '[value]'='choice.value') {{choice.value}}
+
+mat-grid-list(cols='1' rowHeight='60px')
+    mat-grid-tile
+        button('(click)'='createProject()' '[disabled]'='!selectedDirectory'
+            mat-raised-button color='primary') Create Project

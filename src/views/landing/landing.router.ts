@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router'
 
-import { UserView } from './user.view'
+import { LandingView } from './landing.view'
 
 const ROUTES: Routes = [{
-    component: UserView,
-    path: 'user/:num'
+    component: LandingView,
+    path: 'landing',
+    pathMatch: 'full'
+}, {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/landing'
 }]
 
 @NgModule({
@@ -15,4 +20,4 @@ const ROUTES: Routes = [{
         RouterModule.forChild(ROUTES)
     ]
 })
-export class UserRouter {}
+export class LandingRouter {}
