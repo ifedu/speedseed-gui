@@ -1,0 +1,10 @@
+mat-grid-list(cols='4' rowHeight='60px' '*ngIf'='shared.options.template')
+    mat-grid-tile
+        mat-form-field
+            input('[(ngModel)]'='shared.options.project'
+                matInput placeholder='project')
+
+    mat-grid-tile('*ngFor'='let generatorOption of shared.generatorOptions')
+        mat-form-field
+            mat-select('[(ngModel)]'='shared.options[generatorOption.name]' '[placeholder]'='generatorOption.name')
+                mat-option('*ngFor'='let choice of generatorOption.choices' '[value]'='choice.value') {{choice.value}}

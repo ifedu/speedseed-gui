@@ -2,7 +2,7 @@ import { spawn } from 'child_process'
 import { app, BrowserWindow } from 'electron'
 import { resolve } from 'path'
 
-import IpcMain from './ipc'
+import IpcComponents from './ipc.components'
 
 let win: any
 
@@ -43,4 +43,4 @@ class App {
 }
 
 new App()
-new IpcMain(win)
+new IpcComponents(win)

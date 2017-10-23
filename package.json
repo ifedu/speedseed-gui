@@ -22,7 +22,8 @@
         "electron.packager.dist": "gulp electron.packager.dist --electron --dist",
         "electron.run": "gulp electron.run --electron",
         "test": "gulp test --spec",
-        "test.dev": "gulp test.dev --dev --spec"
+        "test.dev": "gulp test.dev --dev --spec",
+        "i": "sd construct & npm i"
     },
     "dependencies": {
         "@angular/common": "4.4.6",
@@ -95,7 +96,7 @@
         "karma-phantomjs-launcher": "1.0.4",
         "phantomjs-prebuilt": "2.1.15",
         "devtron": "1.4.0",
-        "generator-speedseed": "0.34.0",
+        "generator-speedseed": "0.34.1",
         "generator-speedseed-multi-tic-tac-toe": "0.20.0"
     },
     "engines": {

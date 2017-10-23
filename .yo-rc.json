@@ -1,7 +1,7 @@
 {
   "generator-speedseed": {
     "coreName": "generator-speedseed",
-    "coreVersion": "0.34.0",
+    "coreVersion": "0.34.1",
     "project": "speedseedgui",
     "template": "multi-tic-tac-toe",
     "templateFiles": false,

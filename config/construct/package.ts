@@ -13,7 +13,11 @@ export default {
 
     "devDependencies": {
         "devtron": "1.4.0",
-        "generator-speedseed": "0.34.0",
+        "generator-speedseed": "0.34.1",
         "generator-speedseed-multi-tic-tac-toe": "0.20.0",
     },
+
+    "scripts": {
+        "i": "sd construct & npm i"
+    }
 }
