@@ -1,15 +1,15 @@
-import createProject from './components/createProject.ipcmain'
-import searchGenerators from './components/searchGenerators.ipcmain'
-import selectDirectory from './components/selectDirectory.ipcmain'
+import ChangeGenerator from './components/changeGenerator.ipcmain'
+import CreateProject from './components/createProject.ipcmain'
+import SearchGenerators from './components/searchGenerators.ipcmain'
+import SelectDirectory from './components/selectDirectory.ipcmain'
+import Script from './components/script.ipcmain'
 
 export default class IpcComponents {
-    win: any
-
     constructor(win: any) {
-        this.win = win
-
-        new createProject(win)
-        new searchGenerators(win)
-        new selectDirectory(win)
+        new ChangeGenerator()
+        new CreateProject()
+        new SearchGenerators()
+        new SelectDirectory(win)
+        new Script()
     }
 }

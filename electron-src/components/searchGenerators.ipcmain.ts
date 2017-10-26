@@ -1,26 +1,15 @@
 import { ipcMain } from 'electron'
 
-export default class searchGenerators {
-    win: any
-
-    constructor(win: any) {
-        this.win = win
-
-        ipcMain.on('changeGenerator', this.changeGenerator)
-        ipcMain.on('searchGenerators', this.searchGenerators)
+export default class SearchGenerators {
+    constructor() {
+        ipcMain.on('ipcMainSearchGenerators', this.ipcMainSearchGenerators)
     }
 
-    private changeGenerator = (event: any, generator: any) => {
-        const optionsMultiTicTacToe: any = require(`generator-speedseed-multi-tic-tac-toe/seed/options`)
-
-        event.sender.send('sendGeneratorOptions', optionsMultiTicTacToe)
-    }
-
-    private searchGenerators(event: any) {
+    private ipcMainSearchGenerators(event: any) {
         const SearchGenerators = require('./searchGenerators').default
 
         const generators = new SearchGenerators()
 
-        event.sender.send('sendSelectGenerators', generators)
+        event.sender.send('ipcRendererSelectGenerators', generators)
     }
 }

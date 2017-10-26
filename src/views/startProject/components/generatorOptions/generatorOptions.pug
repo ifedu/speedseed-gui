@@ -1,0 +1,24 @@
+mat-grid-list(
+    '*ngIf'='dataGenerator.options.template'
+    cols='4'
+    rowHeight='60px'
+)
+    mat-grid-tile
+        mat-form-field
+            input(
+                '[(ngModel)]'='dataGenerator.options.project'
+                matInput
+                placeholder='project'
+            )
+
+    mat-grid-tile('*ngFor'='let generatorOption of dataGenerator.generatorOptions')
+        mat-form-field
+            mat-select(
+                '[(ngModel)]'='dataGenerator.options[generatorOption.name]'
+                '[placeholder]'='generatorOption.name'
+            )
+                mat-option(
+                    '*ngFor'='let choice of generatorOption.choices'
+                    '[ngClass]'='{"none": checkGeneratorChoice(generatorOption, choice)}'
+                    '[value]'='choice.value'
+                ) {{choice.value}}

@@ -2,7 +2,7 @@
     "description": "Developed with Speedseed to develop with Speedseed using a graphical interface",
     "name": "speedseed-gui",
     "private": true,
-    "version": "0.1.0",
+    "version": "0.2.0",
     "scripts": {
         "gulp": "gulp",
         "build": "gulp build",

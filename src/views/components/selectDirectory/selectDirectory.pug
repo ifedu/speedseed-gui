@@ -1,0 +1,16 @@
+mat-grid-list(cols='2' rowHeight='60px')
+    mat-grid-tile
+        button(
+            '(click)'='selectDirectory()'
+            color='primary'
+            mat-raised-button
+        ) Select Directory
+
+    mat-grid-tile
+        mat-form-field
+            input(
+                '[(ngModel)]'='dataGenerator.selectedDirectory'
+                disabled
+                matInput
+                placeholder='Selected Directory'
+            )

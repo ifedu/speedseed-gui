@@ -1,15 +1,15 @@
 import { dialog, ipcMain } from 'electron'
 
-export default class selectDirectory {
+export default class SelectDirectory {
     win: any
 
     constructor(win: any) {
         this.win = win
 
-        ipcMain.on('selectDirectory', this.selectDirectory)
+        ipcMain.on('ipcMainSelectDirectory', this.ipcMainSelectDirectory)
     }
 
-    private selectDirectory = (event: any) => {
+    private ipcMainSelectDirectory = (event: any) => {
         const options: any = {
             title: 'Selected',
             buttonLabel: 'Open',
@@ -22,6 +22,6 @@ export default class selectDirectory {
     private cbSelectDirectory(event: any, dir: any) {
         dir = (dir) ? dir[0] : dir
 
-        event.sender.send('sendSelectedDirectory', dir)
+        event.sender.send('ipcRendererSelectedDirectory', dir)
     }
 }
