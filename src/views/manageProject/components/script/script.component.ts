@@ -27,7 +27,7 @@ export class ScriptComponent {
     script() {
         // loading.on = true
 
-        ipcRenderer.send('ipcMainScript', dataGenerator.selectedDirectory, this.command)
+        ipcRenderer.send('ipcMainScript', dataGenerator.route, this.command)
     }
 
     private ipcRendererScript = (event: any, code: number) => {

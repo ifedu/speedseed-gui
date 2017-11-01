@@ -46,6 +46,12 @@ class TaskFile extends Task {
                 path: `${this.root}/${paths.electron.tmp.dir}`,
             },
 
+            externals: (ctx: any, req: any, done: any) => (
+                /^node-pty$/.test(req)
+                    ? done(null, `commonjs ${req}`)
+                    : done()
+            ),
+
             node: {
                 __dirname: false,
             },

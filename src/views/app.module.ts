@@ -1,14 +1,12 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { HttpModule } from '@angular/http'
-import { FormsModule } from '@angular/forms'
 import { BrowserModule } from '@angular/platform-browser'
-import { MatButtonModule, MatGridListModule, MatInputModule, MatProgressSpinnerModule, MatSelectModule } from '@angular/material'
 
 import { SharedModule } from 'src/shared.module'
 
-import { AppView } from './app.view'
 import { AppRouter } from './app.router'
+import { AppView } from './app.view'
 
 import { ManageProjectModule } from './manageProject/manageProject.module'
 import { StartProjectModule } from './startProject/startProject.module'
@@ -31,14 +29,7 @@ import { SelectDirectoryComponent } from './components/selectDirectory/selectDir
     imports: [
         BrowserModule,
         CommonModule,
-        FormsModule,
         HttpModule,
-
-        MatButtonModule,
-        MatGridListModule,
-        MatInputModule,
-        MatProgressSpinnerModule,
-        MatSelectModule,
 
         SharedModule,
         AppRouter,
@@ -46,4 +37,5 @@ import { SelectDirectoryComponent } from './components/selectDirectory/selectDir
         StartProjectModule,
     ]
 })
-export class AppModule {}
+export class AppModule {
+}

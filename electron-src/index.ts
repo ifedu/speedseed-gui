@@ -1,10 +1,9 @@
-import { spawn } from 'child_process'
 import { app, BrowserWindow } from 'electron'
-import { resolve } from 'path'
-
-import IpcComponents from './ipc.components'
 
 let win: any
+
+// const { spawn } = require('node-pty')
+// console.log(spawn)
 
 class App {
     constructor() {
@@ -37,10 +36,8 @@ class App {
 
         win.loadURL(`file://${__dirname}/-build/index.html`)
 
-        win.toggleDevTools()
         // require('devtron').install()
     }
 }
 
 new App()
-new IpcComponents(win)

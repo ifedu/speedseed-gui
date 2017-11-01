@@ -1,12 +1,12 @@
 mat-grid-list(cols='1' rowHeight='60px')
-    mat-grid-tile('*ngIf'='dataGenerator.generators')
+    mat-grid-tile('*ngIf'='data.generators')
         mat-form-field
             mat-select(
-                '[(ngModel)]'='dataGenerator.options.template'
+                '[(ngModel)]'='data.generator.options.template'
                 '(change)'='changeGenerator()'
                 placeholder='Generators'
             )
                 mat-option(
-                    '*ngFor'='let generator of dataGenerator.generators'
+                    '*ngFor'='let generator of data.generators'
                     '[value]'='generator.value'
                 ) {{generator.value}}

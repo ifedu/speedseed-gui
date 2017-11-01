@@ -8,16 +8,19 @@ export default {
         "@angular/cdk": "2.0.0-beta.12",
         "@angular/material": "2.0.0-beta.12",
 
+        "devtron": "1.4.0",
         "hammerjs": "2.0.8",
+        "generator-speedseed": "0.34.1",
+        "generator-speedseed-multi-tic-tac-toe": "0.20.0",
+        "node-pty": "0.7.2",
     },
 
     "devDependencies": {
-        "devtron": "1.4.0",
-        "generator-speedseed": "0.34.1",
-        "generator-speedseed-multi-tic-tac-toe": "0.20.0",
+        "electron-rebuild": "1.6.0",
     },
 
     "scripts": {
-        "i": "sd construct & npm i"
+        "electron-rebuild": "./node_modules/.bin/electron-rebuild",
+        "i": "sd construct & npm i",
     }
 }

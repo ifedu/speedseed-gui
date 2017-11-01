@@ -1,36 +1,43 @@
-import { Component, NgZone, OnInit } from '@angular/core'
+import { Component, NgZone } from '@angular/core'
 
-import { ipcRenderer } from 'electron'
+import { ipcRenderer, remote } from 'electron'
 
-import dataGenerator from 'src/constants/dataGenerator'
+import { DataService } from 'src/services/dataGenerator.service'
 
 @Component({
     selector: 'ss-select-directory',
     styles: [require('./selectDirectory.style')],
     template: require('./selectDirectory'),
 })
-export class SelectDirectoryComponent implements OnInit {
-    dataGenerator: any
-
-    constructor(private zone: NgZone) {
-        ipcRenderer.on('ipcRendererSelectedDirectory', this.ipcRendererSelectedDirectory)
-    }
-
-    ngOnInit() {
-        this.dataGenerator = dataGenerator
-
-        dataGenerator.selectedDirectory = localStorage.getItem('directory')
+export class SelectDirectoryComponent {
+    constructor(
+        private data: DataService,
+        private zone: NgZone,
+    ) {
+        this.data.generator.route = localStorage.getItem('directory')
     }
 
     selectDirectory() {
-        ipcRenderer.send('ipcMainSelectDirectory')
+        const options: any = {
+            title: 'Selected',
+            buttonLabel: 'Open',
+            properties: ['openDirectory'],
+        }
+
+        const { dialog } = remote.require('electron')
+
+        dialog.showOpenDialog(remote.getCurrentWindow(), options, this.setSelectedDirectory)
     }
 
-    private ipcRendererSelectedDirectory = (event: any, dir: string) => {
+    private setSelectedDirectory = (dir: string) => {
+        dir = this.isDir(dir)
+
         localStorage.setItem('directory', dir)
 
         this.zone.run(() => {
-            dataGenerator.selectedDirectory = dir
+            this.data.generator.route = dir
         })
     }
+
+    private isDir = (dir: any) => (dir) ? dir[0] : ''
 }

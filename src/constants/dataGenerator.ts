@@ -1,5 +1,5 @@
-const dataGenerator = {
-    generatorOptions: '',
+const dataGenerator: any = {
+    generatorOptions: [],
     generators: '',
     selectedDirectory: '',
 

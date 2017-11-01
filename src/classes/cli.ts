@@ -8,6 +8,7 @@ export default class Cli {
 
         return child_process.spawn(commandSplit[0], commandSplit.splice(1), {
             shell: true,
+            stdio: 'inherit',
         })
     }
 }

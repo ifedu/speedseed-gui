@@ -1,20 +1,20 @@
 mat-grid-list(
-    '*ngIf'='dataGenerator.options.template'
+    '*ngIf'='data.generator.options.template'
     cols='4'
     rowHeight='60px'
 )
     mat-grid-tile
         mat-form-field
             input(
-                '[(ngModel)]'='dataGenerator.options.project'
+                '[(ngModel)]'='data.generator.options.project'
                 matInput
                 placeholder='project'
             )
 
-    mat-grid-tile('*ngFor'='let generatorOption of dataGenerator.generatorOptions')
+    mat-grid-tile('*ngFor'='let generatorOption of data.generatorOptions')
         mat-form-field
             mat-select(
-                '[(ngModel)]'='dataGenerator.options[generatorOption.name]'
+                '[(ngModel)]'='data.generator.options[generatorOption.name]'
                 '[placeholder]'='generatorOption.name'
             )
                 mat-option(

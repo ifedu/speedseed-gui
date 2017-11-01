@@ -10,14 +10,14 @@ export default class Script {
         const commandSplit: any = command.split(' ')
         const commandParams: any = [route, '&&', ...commandSplit]
 
-        const cmd = spawn('cd', commandParams, {
+        const subprocess = spawn('cd', commandParams, {
             shell: true,
         })
 
-        cmd.stdout.on('data', (data) => console.log(`${data}`))
-        cmd.stderr.on('data', (data) => console.log(`${data}`))
+        subprocess.stdout.on('data', (data) => console.log(`${data}`))
+        subprocess.stderr.on('data', (data) => console.log(`${data}`))
 
-        cmd.on('close', (code) => {
+        subprocess.on('close', (code) => {
             event.sender.send('ipcRendererScript', code)
         })
     }

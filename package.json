@@ -2,7 +2,7 @@
     "description": "Developed with Speedseed to develop with Speedseed using a graphical interface",
     "name": "speedseed-gui",
     "private": true,
-    "version": "0.2.0",
+    "version": "0.1.0",
     "scripts": {
         "gulp": "gulp",
         "build": "gulp build",
@@ -23,6 +23,7 @@
         "electron.run": "gulp electron.run --electron",
         "test": "gulp test --spec",
         "test.dev": "gulp test.dev --dev --spec",
+        "electron-rebuild": "./node_modules/.bin/electron-rebuild",
         "i": "sd construct & npm i"
     },
     "dependencies": {
@@ -42,7 +43,11 @@
         "@angular/animations": "4.4.6",
         "@angular/cdk": "2.0.0-beta.12",
         "@angular/material": "2.0.0-beta.12",
-        "hammerjs": "2.0.8"
+        "devtron": "1.4.0",
+        "hammerjs": "2.0.8",
+        "generator-speedseed": "0.34.1",
+        "generator-speedseed-multi-tic-tac-toe": "0.20.0",
+        "node-pty": "0.7.2"
     },
     "devDependencies": {
         "@types/browser-sync": "0.0.37",
@@ -95,9 +100,7 @@
         "karma-jasmine": "1.1.0",
         "karma-phantomjs-launcher": "1.0.4",
         "phantomjs-prebuilt": "2.1.15",
-        "devtron": "1.4.0",
-        "generator-speedseed": "0.34.1",
-        "generator-speedseed-multi-tic-tac-toe": "0.20.0"
+        "electron-rebuild": "1.6.0"
     },
     "engines": {
         "node": ">=6.0.0"

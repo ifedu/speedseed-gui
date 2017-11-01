@@ -1,39 +1,37 @@
-import { Component, NgZone, OnInit } from '@angular/core'
+import { Component, NgZone } from '@angular/core'
 
-import { ipcRenderer } from 'electron'
+import { ipcRenderer, remote } from 'electron'
 
-import dataGenerator from 'src/constants/dataGenerator'
+import SearchGenerators from 'src/classes/searchGenerators'
 import loading from 'src/constants/loading'
+import { DataService } from 'src/services/dataGenerator.service'
 
 @Component({
     selector: 'ss-search-generators',
     styles: [require('./searchGenerators.style')],
     template: require('./searchGenerators'),
 })
-export class SearchGeneratorsComponent implements OnInit {
-    dataGenerator: any
-
-    constructor(private zone: NgZone) {
-        ipcRenderer.on('ipcRendererSelectGenerators', this.ipcRendererSelectGenerators)
-    }
-
-    ngOnInit() {
-        this.dataGenerator = dataGenerator
-
-        dataGenerator.generators = JSON.parse(localStorage.getItem('generators'))
+export class SearchGeneratorsComponent {
+    constructor(
+        private data: DataService,
+        private zone: NgZone,
+    ) {
+        this.data.generators = JSON.parse(localStorage.getItem('generators'))
     }
 
     searchGenerators() {
         loading.on = true
 
-        ipcRenderer.send('ipcMainSearchGenerators')
+        const generators = new SearchGenerators()
+
+        this.setGenerators(generators)
     }
 
-    private ipcRendererSelectGenerators = (event: any, generators: any) => {
+    private setGenerators(generators: any) {
         localStorage.setItem('generators', JSON.stringify(generators))
 
         this.zone.run(() => {
-            dataGenerator.generators = generators
+            this.data.generators = generators
 
             loading.on = false
         })
