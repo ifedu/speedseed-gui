@@ -1,12 +1,7 @@
-import { Component, NgZone } from '@angular/core'
+import { Component } from '@angular/core'
 
-import { remote  } from 'electron'
-
-// const child_process = remote.require('child_process')
-
-import Cli from 'src/classes/cli'
-import loading from 'src/constants/loading'
 import { DataService } from 'src/services/dataGenerator.service'
+import { PtyProcessService } from 'src/services/ptyProcess.service'
 
 @Component({
     selector: 'ss-create-project',
@@ -14,34 +9,20 @@ import { DataService } from 'src/services/dataGenerator.service'
     template: require('./createProject'),
 })
 export class CreateProjectComponent {
-    ptyProcess: any
-
     constructor(
         private data: DataService,
-        private zone: NgZone,
-    ) {
-    }
+        private pty: PtyProcessService,
+    ) {}
 
     createProject() {
-        // loading.on = true
-
         this.data.generator.options.templateFiles = true
 
-        // this.cmdCreateProject()
+        let options: string = JSON.stringify(this.data.generator)
+        options = options.replace(/"/g, "\\'")
 
-        const os = remote.require('os')
-        const { spawn } = remote.require('node-pty')
-
-        const shell: string = os.platform() === 'win32' ? 'powershell.exe' : 'bash'
-        console.log(process.env)
-        this.ptyProcess = spawn(shell, [], {
-            cwd: process.env.HOME,
-            env: process.env,
-            name: 'xterm-color',
-        })
-
-        this.ptyProcess.on('data', (data: any) => {
-            console.log(data)
+        this.pty.write(() => {
+            this.pty.spawn.write(`yo speedseed --speedseedgui="${options}"`)
+            this.pty.spawn.write('\r')
         })
     }
 
@@ -60,36 +41,6 @@ export class CreateProjectComponent {
         }
 
         return true
-    }
-
-    prueba() {
-        this.ptyProcess.write('pwd')
-    }
-
-    prueba2() {
-        this.ptyProcess.write('\r')
-    }
-
-    private cmdCreateProject = () => {
-        let options: string = JSON.stringify(this.data.generator)
-        options = options.replace(/"/g, '\\"')
-
-        // this.subprocess = Cli.spawn(`yo speedseed --speedseedgui="${options}"`)
-        // console.log(this.subprocess)
-        // this.subprocess.stdout.on('data', (data: any) => console.log(`${data}`))
-        // this.subprocess.stderr.on('data', (data: any) => console.log(`${data}`))
-
-        // this.subprocess.on('close', (code: any) => {
-        //     this.responseCreateProject(code)
-        // })
-    }
-
-    private responseCreateProject = (code: number) => {
-        console.log(code)
-
-        this.zone.run(() => {
-            loading.on = false
-        })
     }
 
     private checkValues(i: number) {

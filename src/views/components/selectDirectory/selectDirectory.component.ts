@@ -3,6 +3,7 @@ import { Component, NgZone } from '@angular/core'
 import { ipcRenderer, remote } from 'electron'
 
 import { DataService } from 'src/services/dataGenerator.service'
+import { PtyProcessService } from 'src/services/ptyProcess.service'
 
 @Component({
     selector: 'ss-select-directory',
@@ -12,6 +13,7 @@ import { DataService } from 'src/services/dataGenerator.service'
 export class SelectDirectoryComponent {
     constructor(
         private data: DataService,
+        private pty: PtyProcessService,
         private zone: NgZone,
     ) {
         this.data.generator.route = localStorage.getItem('directory')
@@ -36,6 +38,11 @@ export class SelectDirectoryComponent {
 
         this.zone.run(() => {
             this.data.generator.route = dir
+
+            this.pty.write(() => {
+                this.pty.spawn.write(`cd "${this.data.generator.route}"`)
+                this.pty.spawn.write('\r')
+            })
         })
     }
 

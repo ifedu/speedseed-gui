@@ -1,3 +1,2 @@
-ss-stop-port
-ss-script(command='npm install' txt='npm install')
-ss-script(command='npm start' txt='npm start')
+div('*ngFor'='let script of scripts')
+    ss-script('[command]'='script.command' '[txt]'='script.txt')

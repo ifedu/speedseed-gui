@@ -1,26 +1,17 @@
 export default {
     "description": "Developed with Speedseed to develop with Speedseed using a graphical interface",
     "name": "speedseed-gui",
-    "version": "0.1.0",
+    "version": "0.4.0",
 
     "dependencies": {
-        "@angular/animations": "4.4.6",
+        "@angular/animations": "5.0.0",
         "@angular/cdk": "2.0.0-beta.12",
         "@angular/material": "2.0.0-beta.12",
-
-        "devtron": "1.4.0",
-        "hammerjs": "2.0.8",
-        "generator-speedseed": "0.34.1",
-        "generator-speedseed-multi-tic-tac-toe": "0.20.0",
-        "node-pty": "0.7.2",
     },
 
     "devDependencies": {
-        "electron-rebuild": "1.6.0",
     },
 
     "scripts": {
-        "electron-rebuild": "./node_modules/.bin/electron-rebuild",
-        "i": "sd construct & npm i",
     }
 }

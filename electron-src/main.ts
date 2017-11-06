@@ -2,9 +2,6 @@ import { app, BrowserWindow } from 'electron'
 
 let win: any
 
-// const { spawn } = require('node-pty')
-// console.log(spawn)
-
 class App {
     constructor() {
         app.on('before-quit', this.beforeQuit)

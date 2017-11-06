@@ -1,9 +1,7 @@
 import { Component, Input, NgZone } from '@angular/core'
 
-import { ipcRenderer } from 'electron'
-
-import dataGenerator from 'src/constants/dataGenerator'
-import loading from 'src/constants/loading'
+import { DataService } from 'src/services/dataGenerator.service'
+import { PtyProcessService } from 'src/services/ptyProcess.service'
 
 @Component({
     selector: 'ss-script',
@@ -14,27 +12,15 @@ export class ScriptComponent {
     @Input() command: string
     @Input() txt: string
 
-    dataGenerator: any
-
-    constructor(private zone: NgZone) {
-        ipcRenderer.on('ipcRendererScript', this.ipcRendererScript)
-    }
-
-    ngOnInit() {
-        this.dataGenerator = dataGenerator
-    }
+    constructor(
+        private data: DataService,
+        private pty: PtyProcessService,
+    ) {}
 
     script() {
-        // loading.on = true
-
-        ipcRenderer.send('ipcMainScript', dataGenerator.route, this.command)
-    }
-
-    private ipcRendererScript = (event: any, code: number) => {
-        console.log(code)
-
-        this.zone.run(() => {
-            // loading.on = false
+        this.pty.write(() => {
+            this.pty.spawn.write(this.command)
+            this.pty.spawn.write('\r')
         })
     }
 }

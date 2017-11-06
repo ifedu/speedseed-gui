@@ -1,0 +1,19 @@
+{
+    "name": "speedseed-gui",
+    "private": true,
+    "scripts": {
+        "electron-rebuild": "./node_modules/.bin/electron-rebuild",
+        "postinstall": "npm run electron-rebuild"
+    },
+    "dependencies": {
+        "ansi-parser": "3.2.8",
+        "devtron": "1.4.0",
+        "generator-speedseed": "0.35.0",
+        "generator-speedseed-multi-tic-tac-toe": "0.21.0",
+        "node-pty": "0.7.2",
+        "node-sass": "4.6.0"
+    },
+    "devDependencies": {
+        "electron-rebuild": "1.6.0"
+    }
+}

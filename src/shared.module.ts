@@ -10,6 +10,7 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { DataService } from './services/dataGenerator.service'
+import { PtyProcessService } from './services/ptyProcess.service'
 
 const modules: any = [
     BrowserAnimationsModule,
@@ -33,6 +34,7 @@ const modules: any = [
 
     providers: [
         DataService,
+        PtyProcessService,
     ],
 })
 export class SharedModule {}
