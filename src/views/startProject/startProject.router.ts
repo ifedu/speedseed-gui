@@ -7,6 +7,10 @@ const ROUTES: Routes = [{
     component: StartProjectView,
     path: 'start-project',
     pathMatch: 'full'
+}, {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/start-project'
 }]
 
 @NgModule({

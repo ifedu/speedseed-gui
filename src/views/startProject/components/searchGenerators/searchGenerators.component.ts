@@ -3,24 +3,24 @@ import { Component, NgZone } from '@angular/core'
 import { ipcRenderer, remote } from 'electron'
 
 import SearchGenerators from 'src/classes/searchGenerators'
-import loading from 'src/constants/loading'
+import { LoadingService } from 'src/services/loading.service'
 import { DataService } from 'src/services/dataGenerator.service'
 
 @Component({
     selector: 'ss-search-generators',
-    styles: [require('./searchGenerators.style')],
     template: require('./searchGenerators'),
 })
 export class SearchGeneratorsComponent {
     constructor(
         private data: DataService,
+        private loading: LoadingService,
         private zone: NgZone,
     ) {
         this.data.generators = JSON.parse(localStorage.getItem('generators'))
     }
 
     searchGenerators() {
-        loading.on = true
+        this.loading.on = true
 
         const generators = new SearchGenerators()
 
@@ -30,10 +30,8 @@ export class SearchGeneratorsComponent {
     private setGenerators(generators: any) {
         localStorage.setItem('generators', JSON.stringify(generators))
 
-        this.zone.run(() => {
-            this.data.generators = generators
-
-            loading.on = false
-        })
+        this.data.generators = generators
+        this.loading.on = false
+        this.zone.run(() => {})
     }
 }

@@ -1,16 +1,14 @@
-mat-grid-list(cols='2' rowHeight='60px')
-    mat-grid-tile
-        button(
-            '(click)'='selectDirectory()'
-            color='primary'
-            mat-raised-button
-        ) Select Directory
+div.omg.display-flex.align-center
+    button.omg.margin-right-4.padding-1.size-width(
+        '(click)'='selectDirectory()'
+        color='accent'
+        mat-raised-button
+    ) Select Directory
 
-    mat-grid-tile
-        mat-form-field
-            input(
-                '[(ngModel)]'='data.generator.route'
-                disabled
-                matInput
-                placeholder='Selected Directory'
-            )
+    mat-form-field.omg.size-width
+        input(
+            '[(ngModel)]'='data.generator.route'
+            disabled
+            matInput
+            placeholder='Selected Directory'
+        )

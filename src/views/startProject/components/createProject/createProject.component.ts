@@ -5,7 +5,6 @@ import { PtyProcessService } from 'src/services/ptyProcess.service'
 
 @Component({
     selector: 'ss-create-project',
-    styles: [require('./createProject.style')],
     template: require('./createProject'),
 })
 export class CreateProjectComponent {

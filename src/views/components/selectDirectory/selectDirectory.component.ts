@@ -5,6 +5,8 @@ import { ipcRenderer, remote } from 'electron'
 import { DataService } from 'src/services/dataGenerator.service'
 import { PtyProcessService } from 'src/services/ptyProcess.service'
 
+const { dialog } = remote.require('electron')
+
 @Component({
     selector: 'ss-select-directory',
     styles: [require('./selectDirectory.style')],
@@ -26,25 +28,21 @@ export class SelectDirectoryComponent {
             properties: ['openDirectory'],
         }
 
-        const { dialog } = remote.require('electron')
-
-        dialog.showOpenDialog(remote.getCurrentWindow(), options, this.setSelectedDirectory)
+        dialog.showOpenDialog(remote.getCurrentWindow(), options, this.cbSetSelectedDirectory)
     }
 
-    private setSelectedDirectory = (dir: string) => {
-        dir = this.isDir(dir)
+    private cbSetSelectedDirectory = (dir: string) => {
+        dir = this.getDir(dir)
 
         localStorage.setItem('directory', dir)
 
-        this.zone.run(() => {
-            this.data.generator.route = dir
+        this.data.generator.route = dir
+        this.zone.run(() => {})
 
-            this.pty.write(() => {
-                this.pty.spawn.write(`cd "${this.data.generator.route}"`)
-                this.pty.spawn.write('\r')
-            })
+        this.pty.write(() => {
+            this.pty.spawn.write(`cd "${this.data.generator.route}"\r`)
         })
     }
 
-    private isDir = (dir: any) => (dir) ? dir[0] : ''
+    private getDir = (dir: any) => (dir) ? dir[0] : ''
 }

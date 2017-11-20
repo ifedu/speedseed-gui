@@ -1,16 +1,9 @@
-mat-grid-list(cols='2' rowHeight='60px')
-    mat-grid-tile
-        button(
-            color='basic'
-            mat-raised-button
-            routerLink='/start-project'
-            routerLinkActive='active'
-        ) Start Project
-
-    mat-grid-tile
-        button(
-            color='basic'
-            mat-raised-button
-            routerLink='/manage-project'
-            routerLinkActive='active'
-        ) Manage Project
+nav(mat-tab-nav-bar)
+    a(
+        '*ngFor'='let link of navLinks'
+        '[active]'='rla.isActive'
+        '[routerLink]'='link.path'
+        #rla='routerLinkActive'
+        mat-tab-link
+        routerLinkActive
+    ) {{ link.label }}

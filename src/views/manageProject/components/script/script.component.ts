@@ -1,6 +1,5 @@
 import { Component, Input, NgZone } from '@angular/core'
 
-import { DataService } from 'src/services/dataGenerator.service'
 import { PtyProcessService } from 'src/services/ptyProcess.service'
 
 @Component({
@@ -13,7 +12,6 @@ export class ScriptComponent {
     @Input() txt: string
 
     constructor(
-        private data: DataService,
         private pty: PtyProcessService,
     ) {}
 

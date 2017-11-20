@@ -23,6 +23,8 @@ class App {
 
         win = new BrowserWindow(optionsWin)
 
+        win.openDevTools()
+
         win.maximize()
 
         win.on('closed', () => {
@@ -32,8 +34,6 @@ class App {
         })
 
         win.loadURL(`file://${__dirname}/-build/index.html`)
-
-        // require('devtron').install()
     }
 }
 

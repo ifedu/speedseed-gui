@@ -1,10 +1,10 @@
 import { Component, NgZone } from '@angular/core'
+
 import { remote } from 'electron'
 
 import { DataService } from 'src/services/dataGenerator.service'
 
 @Component({
-    styles: [require('./manageProject.style')],
     template: require('./manageProject'),
 })
 export class ManageProjectView {
@@ -22,10 +22,13 @@ export class ManageProjectView {
     }
 
     setScripts() {
-        for(let prop in this.package.scripts) {
+        for (let prop in this.package.scripts) {
             this.scripts.push({
                 command: `npm run ${prop}`,
-                txt: `<b>${prop}</b> => ${this.package.scripts[prop]}`,
+                txt: `
+                    <div>${prop} =></div>
+                    <div>${this.package.scripts[prop]}</div>
+                `,
             })
         }
     }

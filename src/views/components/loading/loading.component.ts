@@ -1,16 +1,14 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 
-import loading from 'src/constants/loading'
+import { LoadingService } from 'src/services/loading.service'
 
 @Component({
     selector: 'ss-loading',
     styles: [require('./loading.style')],
     template: require('./loading'),
 })
-export class LoadingComponent implements OnInit {
-    loading: any
-
-    ngOnInit() {
-        this.loading = loading
-    }
+export class LoadingComponent {
+    constructor(
+        public loading: LoadingService,
+    ) { }
 }

@@ -1,4 +1,7 @@
-mat-grid-list(cols='1' rowHeight='60px')
-    mat-grid-tile
-        button('(click)'='createProject()' '[disabled]'='checkDisabled()'
-            mat-raised-button color='primary') Create Project
+.omg.display-flex.justify-center
+    button.omg.padding-x-10.padding-y-2(
+        '(click)'='createProject()'
+        '[disabled]'='checkDisabled()'
+        color='primary'
+        mat-raised-button
+    ) Create Project

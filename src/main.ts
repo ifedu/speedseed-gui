@@ -12,6 +12,7 @@ import { AppModule } from './views/app.module'
 
 /*< if (args.dev) { >*/
 remote.getCurrentWebContents().openDevTools()
+remote.require('devtron').install()
 /*< } >*/
 
 /*< if (args.dist) { >*/

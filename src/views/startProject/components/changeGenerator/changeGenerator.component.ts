@@ -1,8 +1,7 @@
 import { Component, NgZone } from '@angular/core'
 
-import { ipcRenderer, remote } from 'electron'
+import { remote } from 'electron'
 
-import loading from 'src/constants/loading'
 import { DataService } from 'src/services/dataGenerator.service'
 
 @Component({
@@ -19,7 +18,7 @@ export class ChangeGeneratorComponent {
     }
 
     changeGenerator() {
-        const optionsMultiTicTacToe: any = remote.require('generator-speedseed-multi-tic-tac-toe/seed/options')
+        const optionsMultiTicTacToe: any = remote.require(`generator-speedseed-${this.data.generator.options.template}/seed/options`)
 
         this.setGeneratorOptions(optionsMultiTicTacToe)
     }
@@ -27,8 +26,7 @@ export class ChangeGeneratorComponent {
     private setGeneratorOptions = (generatorOptions: any) => {
         localStorage.setItem('generatorOptions', JSON.stringify(generatorOptions))
 
-        this.zone.run(() => {
-            this.data.generatorOptions = generatorOptions
-        })
+        this.data.generatorOptions = generatorOptions
+        this.zone.run(() => {})
     }
 }

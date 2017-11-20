@@ -5,11 +5,13 @@ import {
     MatGridListModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTabsModule,
 } from '@angular/material'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { DataService } from './services/dataGenerator.service'
+import { LoadingService } from './services/loading.service'
 import { PtyProcessService } from './services/ptyProcess.service'
 
 const modules: any = [
@@ -21,6 +23,7 @@ const modules: any = [
     MatInputModule,
     MatProgressSpinnerModule,
     MatSelectModule,
+    MatTabsModule,
 ]
 
 @NgModule({
@@ -34,6 +37,7 @@ const modules: any = [
 
     providers: [
         DataService,
+        LoadingService,
         PtyProcessService,
     ],
 })

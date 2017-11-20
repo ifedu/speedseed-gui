@@ -1,12 +1,9 @@
 import { Component, DoCheck } from '@angular/core'
 
-import { ipcRenderer } from 'electron'
-
 import { DataService } from 'src/services/dataGenerator.service'
 
 @Component({
     selector: 'ss-generator-options',
-    styles: [require('./generatorOptions.style')],
     template: require('./generatorOptions'),
 })
 export class GeneratorOptionsComponent implements DoCheck {

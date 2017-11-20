@@ -1,7 +1,7 @@
 import { Injectable, NgZone } from '@angular/core'
 import { remote } from 'electron'
 
-import loading from 'src/constants/loading'
+import { LoadingService } from 'src/services/loading.service'
 import { DataService } from 'src/services/dataGenerator.service'
 
 const os = remote.require('os')
@@ -15,18 +15,17 @@ export class PtyProcessService {
 
     constructor(
         private data: DataService,
+        private loading: LoadingService,
         private zone: NgZone,
     ) {
-
-        const shell: string = os.platform() === 'win32' ? 'powershell.exe' : 'bash'
+        const shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash'
 
         this.spawn = spawn(shell, [], {
-            cwd: localStorage.getItem('directory'),
             env: process.env,
         })
 
         this.spawn.on('data', (data: any, a: any) => {
-            this.zone.run(() => loading.on = true)
+            loading.on = true
 
             const txt = stripAnsi(data)
             console.log(txt)
@@ -36,12 +35,14 @@ export class PtyProcessService {
             }
 
             if (txt[txt.length-1] === '>') {
-                this.zone.run(() => loading.on = false)
+                loading.on = false
             }
 
-            if (txt.indexOf('[Browsersync]') !== -1) {
-                this.zone.run(() => loading.on = false)
+            if (txt.indexOf('Finished') !== -1) {
+                loading.on = false
             }
+
+            this.zone.run(() => {})
         })
     }
 

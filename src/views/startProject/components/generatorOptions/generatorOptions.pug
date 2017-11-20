@@ -1,24 +1,20 @@
-mat-grid-list(
-    '*ngIf'='data.generator.options.template'
-    cols='4'
-    rowHeight='60px'
-)
-    mat-grid-tile
-        mat-form-field
+.omg.display-flex.flex-wrap('*ngIf'='data.generator.options.template')
+    .omg.flex-25
+        mat-form-field.omg.size-width.padding-4
             input(
                 '[(ngModel)]'='data.generator.options.project'
                 matInput
                 placeholder='project'
             )
 
-    mat-grid-tile('*ngFor'='let generatorOption of data.generatorOptions')
-        mat-form-field
+    .omg.flex-25('*ngFor'='let generatorOption of data.generatorOptions')
+        mat-form-field.omg.size-width.padding-4
             mat-select(
                 '[(ngModel)]'='data.generator.options[generatorOption.name]'
                 '[placeholder]'='generatorOption.name'
             )
-                mat-option(
+                mat-option.omg(
                     '*ngFor'='let choice of generatorOption.choices'
-                    '[ngClass]'='{"none": checkGeneratorChoice(generatorOption, choice)}'
+                    '[ngClass]'='{"display-none": checkGeneratorChoice(generatorOption, choice)}'
                     '[value]'='choice.value'
                 ) {{choice.value}}
