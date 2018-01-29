@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 
-import { DataService } from 'src/services/dataGenerator.service'
+import { DataService } from 'src/services/data.service'
 import { PtyProcessService } from 'src/services/ptyProcess.service'
 
 @Component({

@@ -2,7 +2,7 @@ import { Component, NgZone } from '@angular/core'
 
 import { remote } from 'electron'
 
-import { DataService } from 'src/services/dataGenerator.service'
+import { DataService } from 'src/services/data.service'
 
 @Component({
     selector: 'ss-change-generator',

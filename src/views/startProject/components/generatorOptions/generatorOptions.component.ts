@@ -1,6 +1,6 @@
 import { Component, DoCheck } from '@angular/core'
 
-import { DataService } from 'src/services/dataGenerator.service'
+import { DataService } from 'src/services/data.service'
 
 @Component({
     selector: 'ss-generator-options',

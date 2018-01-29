@@ -2,8 +2,9 @@ import { Component, NgZone } from '@angular/core'
 
 import { ipcRenderer, remote } from 'electron'
 
-import { DataService } from 'src/services/dataGenerator.service'
+import { DataService } from 'src/services/data.service'
 import { PtyProcessService } from 'src/services/ptyProcess.service'
+import { ScriptService } from 'src/services/script.service'
 
 const { dialog } = remote.require('electron')
 
@@ -16,6 +17,7 @@ export class SelectDirectoryComponent {
     constructor(
         private data: DataService,
         private pty: PtyProcessService,
+        private script: ScriptService,
         private zone: NgZone,
     ) {
         this.data.generator.route = localStorage.getItem('directory')
@@ -37,6 +39,7 @@ export class SelectDirectoryComponent {
         localStorage.setItem('directory', dir)
 
         this.data.generator.route = dir
+        this.script.checkPackage()
         this.zone.run(() => {})
 
         this.pty.write(() => {

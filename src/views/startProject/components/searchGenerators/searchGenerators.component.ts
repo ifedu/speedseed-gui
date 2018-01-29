@@ -4,7 +4,7 @@ import { ipcRenderer, remote } from 'electron'
 
 import SearchGenerators from 'src/classes/searchGenerators'
 import { LoadingService } from 'src/services/loading.service'
-import { DataService } from 'src/services/dataGenerator.service'
+import { DataService } from 'src/services/data.service'
 
 @Component({
     selector: 'ss-search-generators',

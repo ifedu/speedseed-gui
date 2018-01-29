@@ -16,6 +16,7 @@ class App {
         const optionsWin = {
             center: true,
             height: 800,
+            icon: `${__dirname}/-build/assets/speedseed.ico`,
             maximizable: true,
             title: 'SpeedSeed',
             width: 1000,

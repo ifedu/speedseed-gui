@@ -10,9 +10,10 @@ import {
 } from '@angular/material'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
-import { DataService } from './services/dataGenerator.service'
+import { DataService } from './services/data.service'
 import { LoadingService } from './services/loading.service'
 import { PtyProcessService } from './services/ptyProcess.service'
+import { ScriptService } from './services/script.service'
 
 const modules: any = [
     BrowserAnimationsModule,
@@ -39,6 +40,7 @@ const modules: any = [
         DataService,
         LoadingService,
         PtyProcessService,
+        ScriptService,
     ],
 })
 export class SharedModule {}

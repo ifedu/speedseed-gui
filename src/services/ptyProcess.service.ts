@@ -2,7 +2,7 @@ import { Injectable, NgZone } from '@angular/core'
 import { remote } from 'electron'
 
 import { LoadingService } from 'src/services/loading.service'
-import { DataService } from 'src/services/dataGenerator.service'
+import { DataService } from 'src/services/data.service'
 
 const os = remote.require('os')
 const stripAnsi = remote.require('strip-ansi')
@@ -50,8 +50,15 @@ export class PtyProcessService {
         this.stop()
 
         setTimeout(() => {
+            this.setDirectory()
             fn()
         }, 1000)
+    }
+
+    private setDirectory() {
+        const dir: string = localStorage.getItem('directory')
+
+        this.spawn.write(`cd "${dir}"\r`)
     }
 
     private stop() {

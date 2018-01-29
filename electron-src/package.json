@@ -8,9 +8,9 @@
     "dependencies": {
         "ansi-parser": "3.2.8",
         "devtron": "1.4.0",
-        "generator-speedseed": "0.36.0",
-        "generator-speedseed-multi-tic-tac-toe": "0.22.0",
-        "node-pty": "0.7.3"
+        "generator-speedseed": "0.36.1",
+        "generator-speedseed-multi-tic-tac-toe": "0.22.1",
+        "node-pty": "0.7.4"
     },
     "devDependencies": {
         "electron-rebuild": "1.6.0"
